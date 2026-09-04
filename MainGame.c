@@ -36,11 +36,11 @@ void print_board()
         }
         printf ("\n");
     }
-};
+}
 
-int game_X();
-int game_O();
-int gameover();
+int game_X(void);
+int game_O(void);
+int gameover(void);
 
 //Start the game
 void start()
