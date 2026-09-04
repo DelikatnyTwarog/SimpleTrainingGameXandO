@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 //Clear the console (Windows and Linux)
 void clear_screen() {
@@ -39,8 +40,9 @@ void print_board()
 
 int game_X();
 int game_O();
+int gameover();
 
-
+//Start the game
 void start()
 {
     char game_start;
@@ -71,196 +73,378 @@ void start()
     } 
 };
 
+
+//Main function
+
 int main()
 {   
     start();
     return (0);
 }
 
+//Alert message for the game
+const char *Alert = "...\n";
+int game_counter = 0;
+
+//Player X game function
+
 int game_X()
 {
 
     clear_screen();
+    printf(Alert);
     print_board();
+    
 
     printf("Player X starting game.\nType where do you want put cross X from A1 to C3 \n:");
-        char move [2];
-        scanf ("%s", &move);
-        move[0] = tolower(move[0]);
+    char move[3];
+    scanf(" %2s", move);
 
-    if (move[0] == 'a' && move[1] == '1')
+    char col_char, row_char;
+
+        
+    if (isalpha(move[0]))
     {
-        board[2][2] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'a' && move[1] == '2')
-    {
-        board[4][2] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'a' && move[1] == '3')
-    {
-        board[6][2] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'b' && move[1] == '1')
-    {
-        board[2][4] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'b' && move[1] == '2')
-    {
-        board[4][4] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'b' && move[1] == '3')
-    {
-        board[6][4] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'c' && move[1] == '1')
-    {
-        board[2][6] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'c' && move[1] == '2')
-    {
-        board[4][6] = 'X';
-        game_O();
-    }
-    else if (move[0] == 'c' && move[1] == '3')
-    {
-        board[6][6] = 'X';
-        game_O();
+        col_char = tolower(move[0]);
+        row_char = move[1];
     }
     else
     {
-        printf("Invalid input\n");
-        return (game_X());
+        col_char = tolower(move[1]);
+        row_char = move[0];
+    }
+
+    if (col_char == 'a' && row_char == '1')
+    {
+        if (board[2][2] == 'X' || board[2][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[2][2] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'a' && row_char == '2') 
+    {
+        if (board[4][2] == 'X' || board[4][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[4][2] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'a' && row_char == '3') 
+    {
+        if (board[6][2] == 'X' || board[6][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[6][2] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+        
+        }
+    }
+    else if (col_char == 'b' && row_char == '1') 
+    {
+        if (board[2][4] == 'X' || board[2][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[2][4] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'b' && row_char == '2') 
+    {
+        if (board[4][4] == 'X' || board[4][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[4][4] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'b' && row_char == '3') 
+    { 
+        if (board[6][4] == 'X' || board[6][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[6][4] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'c' && row_char == '1') 
+    {
+        if (board[2][6] == 'X' || board[2][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[2][6] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else if (col_char == 'c' && row_char == '2') 
+    {
+        if (board[4][6] == 'X' || board[4][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[4][6] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }   
+    }
+    else if (col_char == 'c' && row_char == '3') 
+    {
+        if (board[6][6] == 'X' || board[6][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_X();
+        }
+        else
+        {
+            board[6][6] = 'X';
+            Alert = "...\n";
+            game_counter++;
+            game_O();
+            
+        }
+    }
+    else 
+    {   
+        Alert = "Invalid input\n";
+        game_X();
     }
 }
 
-// int game_O()
-// {
-//     clear_screen();
-//     print_board();
-
-//     printf("Player O starting game.\nType where do you want put circle O from A1 to C3 \n:");
-//         char move [2];
-//         scanf ("%s", &move);
-//         move[0] = tolower(move[0]);
-        
-//     if (move[0] == 'a' && move[1] == '1')
-//     {
-//         board[2][2] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'a' && move[1] == '2')
-//     {
-//         board[4][2] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'a' && move[1] == '3')
-//     {
-//         board[6][2] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'b' && move[1] == '1')
-//     {
-//         board[2][4] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'b' && move[1] == '2')
-//     {
-//         board[4][4] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'b' && move[1] == '3')
-//     {
-//         board[6][4] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'c' && move[1] == '1')
-//     {
-//         board[2][6] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'c' && move[1] == '2')
-//     {
-//         board[4][6] = 'O';
-//         game_X();
-//     }
-//     else if (move[0] == 'c' && move[1] == '3')
-//     {
-//         board[6][6] = 'O';
-//         game_X();
-//     }
-//     else
-//     {
-//         printf("Invalid input\n");
-//         return (game_O());
-//     }
-// }
+//Player O game function
 
 int game_O()
 {
     clear_screen();
+    printf(Alert);
     print_board();
 
     printf("Player O starting game.\nType where do you want put circle O from A1 to C3 \n:");
-        char move [2];
-        scanf ("%s", &move);
-        move[0] = tolower(move[0]);
+    
+    char move[3];
+    scanf(" %2s", move);
+
+    char col_char, row_char;
+
         
-    if (move[0] == 'a' || move[1] == '1')
+    if (isalpha(move[0]))
     {
-        board[2][2] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'a' && move[1] == '2')
-    {
-        board[4][2] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'a' && move[1] == '3')
-    {
-        board[6][2] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'b' && move[1] == '1')
-    {
-        board[2][4] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'b' && move[1] == '2')
-    {
-        board[4][4] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'b' && move[1] == '3')
-    {
-        board[6][4] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'c' && move[1] == '1')
-    {
-        board[2][6] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'c' && move[1] == '2')
-    {
-        board[4][6] = 'O';
-        game_X();
-    }
-    else if (move[0] == 'c' && move[1] == '3')
-    {
-        board[6][6] = 'O';
-        game_X();
+        col_char = tolower(move[0]);
+        row_char = move[1];
     }
     else
     {
-        printf("Invalid input\n");
-        return (game_O());
+        col_char = tolower(move[1]);
+        row_char = move[0];
+    }
+
+    if (col_char == 'a' && row_char == '1')
+    {
+        if (board[2][2] == 'X' || board[2][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[2][2] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'a' && row_char == '2') 
+    {
+        if (board[4][2] == 'X' || board[4][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[4][2] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'a' && row_char == '3') 
+    {
+        if (board[6][2] == 'X' || board[6][2] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[6][2] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'b' && row_char == '1') 
+    {
+        if (board[2][4] == 'X' || board[2][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[2][4] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'b' && row_char == '2') 
+    {
+        if (board[4][4] == 'X' || board[4][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[4][4] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'b' && row_char == '3') 
+    { 
+        if (board[6][4] == 'X' || board[6][4] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[6][4] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'c' && row_char == '1') 
+    {
+        if (board[2][6] == 'X' || board[2][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[2][6] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else if (col_char == 'c' && row_char == '2') 
+    {
+        if (board[4][6] == 'X' || board[4][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[4][6] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }   
+    }
+    else if (col_char == 'c' && row_char == '3') 
+    {
+        if (board[6][6] == 'X' || board[6][6] == 'O') 
+        {
+            Alert = "This spot is already taken\n";
+            game_O();
+        }
+        else
+        {
+            board[6][6] = 'O';
+            Alert = "...\n";
+            game_counter++;
+            game_X();
+        }
+    }
+    else 
+    {   
+        Alert = "Invalid input\n";
+        game_O();
     }
 }
+
+int gameover()
+{
+    clear_screen();
+    printf(Alert);
+    print_board();
+    if (game_counter == 9)
+    {
+        printf("Game over\n");
+        (exit(0));
+    }
+    return 0;
+}
+
 
