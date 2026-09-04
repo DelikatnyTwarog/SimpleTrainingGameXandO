@@ -1,5 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+//Clear the console (Windows and Linux)
+void clear_screen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
 
 //Board for the game
 char board[8][8] = {
@@ -33,6 +44,7 @@ int game_O();
 void start()
 {
     char game_start;
+    clear_screen();
 
     printf("...\n\n");
     printf("Here is game X and O. If you want to play, type 'Y'; if not, type 'N'.\n:");
@@ -41,17 +53,19 @@ void start()
 
     if (game_start == 'Y' || game_start == 'y')
     {
+        clear_screen();
         printf("Starting game\n");
         game_X();
     }
     else if (game_start == 'N' || game_start == 'n')
     {
+        clear_screen();
         printf("Exiting\n");
         return (exit(0));
     }
     else
     {
-
+        clear_screen();
         printf("Invalid input\n");
         return (start());
     } 
@@ -65,53 +79,56 @@ int main()
 
 int game_X()
 {
+
+    clear_screen();
     print_board();
 
     printf("Player X starting game.\nType where do you want put cross X from A1 to C3 \n:");
         char move [2];
         scanf ("%s", &move);
+        move[0] = tolower(move[0]);
 
-    if (move[0] == 'A' || move[0] == 'a' && move[1] == '1')
+    if (move[0] == 'a' && move[1] == '1')
     {
         board[2][2] = 'X';
         game_O();
     }
-    else if (move[0] == 'A' || move[0] == 'a' && move[1] == '2')
+    else if (move[0] == 'a' && move[1] == '2')
     {
         board[4][2] = 'X';
         game_O();
     }
-    else if (move[0] == 'A' || move[0] == 'a' && move[1] == '3')
+    else if (move[0] == 'a' && move[1] == '3')
     {
         board[6][2] = 'X';
         game_O();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '1')
+    else if (move[0] == 'b' && move[1] == '1')
     {
         board[2][4] = 'X';
         game_O();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '2')
+    else if (move[0] == 'b' && move[1] == '2')
     {
         board[4][4] = 'X';
         game_O();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '3')
+    else if (move[0] == 'b' && move[1] == '3')
     {
         board[6][4] = 'X';
         game_O();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '1')
+    else if (move[0] == 'c' && move[1] == '1')
     {
         board[2][6] = 'X';
         game_O();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '2')
+    else if (move[0] == 'c' && move[1] == '2')
     {
         board[4][6] = 'X';
         game_O();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '3')
+    else if (move[0] == 'c' && move[1] == '3')
     {
         board[6][6] = 'X';
         game_O();
@@ -121,58 +138,121 @@ int game_X()
         printf("Invalid input\n");
         return (game_X());
     }
-
 }
+
+// int game_O()
+// {
+//     clear_screen();
+//     print_board();
+
+//     printf("Player O starting game.\nType where do you want put circle O from A1 to C3 \n:");
+//         char move [2];
+//         scanf ("%s", &move);
+//         move[0] = tolower(move[0]);
+        
+//     if (move[0] == 'a' && move[1] == '1')
+//     {
+//         board[2][2] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'a' && move[1] == '2')
+//     {
+//         board[4][2] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'a' && move[1] == '3')
+//     {
+//         board[6][2] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'b' && move[1] == '1')
+//     {
+//         board[2][4] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'b' && move[1] == '2')
+//     {
+//         board[4][4] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'b' && move[1] == '3')
+//     {
+//         board[6][4] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'c' && move[1] == '1')
+//     {
+//         board[2][6] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'c' && move[1] == '2')
+//     {
+//         board[4][6] = 'O';
+//         game_X();
+//     }
+//     else if (move[0] == 'c' && move[1] == '3')
+//     {
+//         board[6][6] = 'O';
+//         game_X();
+//     }
+//     else
+//     {
+//         printf("Invalid input\n");
+//         return (game_O());
+//     }
+// }
+
 int game_O()
 {
+    clear_screen();
     print_board();
 
     printf("Player O starting game.\nType where do you want put circle O from A1 to C3 \n:");
         char move [2];
         scanf ("%s", &move);
-
+        move[0] = tolower(move[0]);
         
-    if (move[0] == 'A' || move[0] == 'a' && move[1] == '1')
+    if (move[0] == 'a' || move[1] == '1')
     {
         board[2][2] = 'O';
         game_X();
     }
-    else if (move[0] == 'A' || move[0] == 'a' && move[1] == '2')
+    else if (move[0] == 'a' && move[1] == '2')
     {
         board[4][2] = 'O';
         game_X();
     }
-    else if (move[0] == 'A' || move[0] == 'a' && move[1] == '3')
+    else if (move[0] == 'a' && move[1] == '3')
     {
         board[6][2] = 'O';
         game_X();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '1')
+    else if (move[0] == 'b' && move[1] == '1')
     {
         board[2][4] = 'O';
         game_X();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '2')
+    else if (move[0] == 'b' && move[1] == '2')
     {
         board[4][4] = 'O';
         game_X();
     }
-    else if (move[0] == 'B' || move[0] == 'b' && move[1] == '3')
+    else if (move[0] == 'b' && move[1] == '3')
     {
         board[6][4] = 'O';
         game_X();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '1')
+    else if (move[0] == 'c' && move[1] == '1')
     {
         board[2][6] = 'O';
         game_X();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '2')
+    else if (move[0] == 'c' && move[1] == '2')
     {
         board[4][6] = 'O';
         game_X();
     }
-    else if (move[0] == 'C' || move[0] == 'c' && move[1] == '3')
+    else if (move[0] == 'c' && move[1] == '3')
     {
         board[6][6] = 'O';
         game_X();
@@ -182,5 +262,5 @@ int game_O()
         printf("Invalid input\n");
         return (game_O());
     }
-
 }
+
