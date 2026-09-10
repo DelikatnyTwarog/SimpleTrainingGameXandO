@@ -39,6 +39,7 @@ void print_board()
 }
 
 int game_X(void);
+int counter_break(void);
 int game_O(void);
 int gameover(void);
 
@@ -126,6 +127,7 @@ int game_X()
             board[2][2] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -142,6 +144,7 @@ int game_X()
             board[4][2] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -158,6 +161,7 @@ int game_X()
             board[6][2] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
         
         }
@@ -174,6 +178,7 @@ int game_X()
             board[2][4] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -190,6 +195,7 @@ int game_X()
             board[4][4] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -206,6 +212,7 @@ int game_X()
             board[6][4] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -222,6 +229,7 @@ int game_X()
             board[2][6] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -238,6 +246,7 @@ int game_X()
             board[4][6] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }   
@@ -254,6 +263,7 @@ int game_X()
             board[6][6] = 'X';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_O();
             
         }
@@ -304,6 +314,7 @@ int game_O()
             board[2][2] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -319,6 +330,7 @@ int game_O()
             board[4][2] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -334,6 +346,7 @@ int game_O()
             board[6][2] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -349,6 +362,7 @@ int game_O()
             board[2][4] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -364,6 +378,7 @@ int game_O()
             board[4][4] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -379,6 +394,7 @@ int game_O()
             board[6][4] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -394,6 +410,7 @@ int game_O()
             board[2][6] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -409,6 +426,7 @@ int game_O()
             board[4][6] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }   
     }
@@ -424,6 +442,7 @@ int game_O()
             board[6][6] = 'O';
             Alert = "...\n";
             game_counter++;
+            counter_break();
             game_X();
         }
     }
@@ -447,4 +466,14 @@ int gameover()
     return 0;
 }
 
-
+int counter_break()
+{
+    if (game_counter == 9)
+    {
+        printf("Game over \nGame over \nGame over \nGame over \nGame over \nGame over \n");
+    }
+    else
+    {
+        return 0;
+    }
+}
