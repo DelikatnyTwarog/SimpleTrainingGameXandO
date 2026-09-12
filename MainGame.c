@@ -531,6 +531,12 @@ int game_result()
         end_game();
         winner = 'X';
     }
+    else if (board[6][2] == 'X' && board[4][4] == 'X' && board[2][6] == 'X') // 3>^
+    {
+        game_counter = 9;
+        end_game();
+        winner = 'X';
+    }
 
     //Check table for Player O
 
@@ -571,6 +577,12 @@ int game_result()
         winner = 'O';
     }
     else if (board[2][2] == 'O' && board[4][4] == 'O' && board[6][6] == 'O') // 3v>    
+    {
+        game_counter = 9;
+        end_game();
+        winner = 'O';
+    }
+        else if (board[6][2] == 'O' && board[4][4] == 'O' && board[2][6] == 'O') // 3>^    
     {
         game_counter = 9;
         end_game();
