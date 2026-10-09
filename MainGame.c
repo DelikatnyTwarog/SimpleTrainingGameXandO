@@ -39,6 +39,7 @@ void print_board()
 }
 
 int end_game(void);
+int wins_count(void);
 int game_X(void);
 int game_O(void);
 int game_result(void);
@@ -88,6 +89,10 @@ int main()
 const char *Alert = "...\n";
 int game_counter = 0;
 char winner = ' ';
+int Player_X = 0;
+int Player_O = 0;
+
+
 
 //Player X game function
 
@@ -427,7 +432,6 @@ int game_O()
                 board[2][6] = 'O';
                 Alert = "...\n";
                 game_counter++;
-                
                 game_X();
             }
         }
@@ -478,11 +482,31 @@ int end_game()
         clear_screen();
         print_board();
         printf("Game over \n Player %c won!!.\n", winner);
+        printf("Player X have %d wins!", Player_X);
+        printf("Player O have %d wins!", Player_O);
     }
     else
     {
         return 0;
     }
+}
+
+int wins_count()
+{
+
+    if (winner = 'X')
+    {
+        Player_X++ ;
+    }
+    else if (winner = 'O')
+    {
+        Player_O++;
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 int game_result()
@@ -494,48 +518,56 @@ int game_result()
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[4][2] == 'X' && board[4][4] == 'X' && board[4][6] == 'X') // 2>
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[6][2] == 'X' && board[6][4] == 'X' && board[6][6] == 'X') // 3>
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[2][2] == 'X' && board[4][2] == 'X' && board[6][2] == 'X') // 1v
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[2][4] == 'X' && board[4][4] == 'X' && board[6][4] == 'X') // 2v
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[2][6] == 'X' && board[4][6] == 'X' && board[6][6] == 'X') // 3v
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[2][2] == 'X' && board[4][4] == 'X' && board[6][6] == 'X') // 3v>
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
     else if (board[6][2] == 'X' && board[4][4] == 'X' && board[2][6] == 'X') // 3>^
     {
         game_counter = 9;
         end_game();
         winner = 'X';
+        wins_count();
     }
 
     //Check table for Player O
@@ -545,48 +577,56 @@ int game_result()
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[4][2] == 'O' && board[4][4] == 'O' && board[4][6] == 'O') // 2>
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[6][2] == 'O' && board[6][4] == 'O' && board[6][6] == 'O') // 3>
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[2][2] == 'O' && board[4][2] == 'O' && board[6][2] == 'O') // 1v
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[2][4] == 'O' && board[4][4] == 'O' && board[6][4] == 'O') // 2v
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[2][6] == 'O' && board[4][6] == 'O' && board[6][6] == 'O') // 3v
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else if (board[2][2] == 'O' && board[4][4] == 'O' && board[6][6] == 'O') // 3v>    
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
         else if (board[6][2] == 'O' && board[4][4] == 'O' && board[2][6] == 'O') // 3>^    
     {
         game_counter = 9;
         end_game();
         winner = 'O';
+        wins_count();
     }
     else
     {   
